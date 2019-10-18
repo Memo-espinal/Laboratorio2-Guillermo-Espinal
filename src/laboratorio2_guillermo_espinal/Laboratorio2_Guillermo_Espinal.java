@@ -171,7 +171,19 @@ public class Laboratorio2_Guillermo_Espinal {
                     unis.get(ascend).setNivel("privada prestigiosa");
 
                 } else if (unis.get(ascend).getNivel().equals("publica prestigiosa")) {
-                    unis.get(ascend).setNivel("nacional");
+                    //unis.get(ascend).setNivel("nacional");
+                    boolean nacional=false;
+                    int posnacional=0;
+                    for (int i = 0; i < unis.size(); i++) {
+                        if (unis.get(i).getNivel().equals("nacional")) {
+                            nacional =true;
+                            posnacional = unis.indexOf(i);
+                        }
+                    }
+                    if(nacional==true){
+                        unis.get(posnacional).setNivel("publica prestigiosa");
+                        unis.get(ascend).setNivel("nacional");
+                    }
 
                 } else if (unis.get(ascend).getNivel().equals("privada prestigiosa")) {
                     System.out.println("Las privadas no pueden pasar a nacionales");
@@ -266,6 +278,31 @@ public class Laboratorio2_Guillermo_Espinal {
                 }
                 break;
             case 7:
+                System.out.println("Ingrese que universidad quiere descender ");
+                for (int i = 0; i < unis.size(); i++) {
+                    System.out.println("" + unis.indexOf(i) + " " + unis.get(i).getNombre());
+                }
+                 int descend = zelda.nextInt();
+
+                //descenso de las universidades
+                if (unis.get(descend).getNivel().equals("publica")) {
+                    unis.remove(descend);
+
+                } else if (unis.get(descend).getNivel().equals("privada")) {
+                    unis.remove(descend);
+
+                } else if (unis.get(descend).getNivel().equals("publica prestigiosa")) {
+                    unis.get(descend).setNivel("publica");
+
+                } else if (unis.get(descend).getNivel().equals("privada prestigiosa")) {
+                    unis.get(descend).setNivel("privada");
+
+                } else if ((unis.get(descend).getNivel().equals("nacional"))) {
+                    unis.get(descend).setNivel("publica prestigiosa");
+                } else {
+                    System.out.println("error");
+                }
+                
                 break;
             case 8:
                 break;
