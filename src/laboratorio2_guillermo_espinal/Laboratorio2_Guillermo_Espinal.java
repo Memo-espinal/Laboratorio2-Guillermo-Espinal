@@ -237,16 +237,33 @@ public class Laboratorio2_Guillermo_Espinal {
                         
                         break;
                     case 3:
+                        System.out.println("Ingrese el nuevo nombre del rector:");
+                        zelda.nextLine();
+                        String nuevorec =zelda.nextLine();
+                        unis.get(pos).setRecnombre(nuevorec);
                         break;
                     case 4:
+                        // checka aca
+                        System.out.println("Ingrese la nueva fecha(dia/mes/año): ");
+                        //System.out.println("Ingrese la fecha de creacion: (dia/fecha/año)");
+                        fecha = zelda.nextLine();
+                        date = sf.parse(fecha);
+                         unis.get(pos).setCreacion(date);
+                         //por cualquier cosa
                         break;
                     case 5:
+                        System.out.println("Ingrese la nueva cantidad:");
+                        int nuevosmaes =zelda.nextInt();
+                        unis.get(pos).setNummaestro(nuevosmaes);
                         break;
                     case 6:
+                         
+                        System.out.println("Ingrese la nueva cantidad:");
+                        int nuevosest =zelda.nextInt();
+                        unis.get(pos).setNumestu(nuevosest);
                         break;
 
                 }
-
                 break;
             case 7:
                 break;
