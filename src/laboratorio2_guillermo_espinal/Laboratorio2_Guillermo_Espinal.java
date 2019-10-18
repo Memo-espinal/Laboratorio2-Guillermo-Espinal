@@ -41,8 +41,10 @@ public class Laboratorio2_Guillermo_Espinal {
                 //break;
                 case 3:
                     System.out.println("Ingrese el usuario: ");
+                    zelda.nextLine();
                     String user = zelda.nextLine();
                     System.out.println("Ingrese la contraseña");
+                    //zelda.nextLine();
                     String contra = zelda.nextLine();
                     if (user.equals("leobanegas") && contra.equals("99")) {
                         usuario = true;
@@ -61,8 +63,19 @@ public class Laboratorio2_Guillermo_Espinal {
 
             }
         }// fin del while de validacion de ususario
-
+       
         //fin de validacion de usuario 
+        while (resp!=0){
+        System.out.println("0. Salir");
+        System.out.println("1. Crear Universidades ");
+        System.out.println("2. Eliminar Universidades ");
+        System.out.println("3. Log In ");
+        System.out.println("4. Ascender Universidad");
+        System.out.println("5. Listar Universidades y su Sucursal ");
+        System.out.println("6. Modificar Universidad");
+        System.out.println("7. Descender Universidad");
+        System.out.println("8. RANDOM");
+        resp = zelda.nextInt();
         ArrayList<Universidad> unis = new ArrayList<>();
         SimpleDateFormat sf = new SimpleDateFormat("dd/MM/yyy");
         switch (resp) {
@@ -70,10 +83,10 @@ public class Laboratorio2_Guillermo_Espinal {
                 System.out.println("Ingrese el nombre de la universidad:");
                 zelda.nextLine();
                 String nombre = zelda.nextLine();
-
+                
                 //sucursal con validacion
                 System.out.println("Ingrese el nombre de la sucursal");
-                zelda.nextLine();
+                //zelda.nextLine();
                 String sucursal = zelda.nextLine();
                 boolean validacionsuc = true;
                 for (int i = 0; i < unis.size(); i++) {
@@ -96,23 +109,25 @@ public class Laboratorio2_Guillermo_Espinal {
                 //fin de la validacion
 
                 // validacion de nivel
-                System.out.println("Ingrese el nivel de la universidad (publica/privada): ");
-                String nivel = zelda.nextLine();
-                nivel.toLowerCase();
+                System.out.println("Ingrese el nivel de la universidad ( 1.- publica/2.- privada): ");
+                int nivel = zelda.nextInt();
+                String nivel_s;
                 boolean valiniv = true;
-                if (!"publica".equals(nivel) || !"privada".equals(nivel)) {
-                    System.out.println("La universidad solo puede ser publica/privada");
-                    valiniv = false;
+                if (nivel==1){
+                  nivel_s = "publica";  
+                }else{
+                    nivel_s="privada";
                 }
-                while (valiniv == false) {
-                    System.out.println("Ingrese el nivel de la universidada: ");
+                /*while (valiniv == false) {
+                    System.out.println("Ingrese el nivel de la universidad: ");
                     nivel = zelda.nextLine();
-                    valiniv = true;
-                    if (!"publica".equals(nivel) || !"privada".equals(nivel)) {
+                   // valiniv = true;
+                    if (nivel!="publica" || nivel!="privada") {
                         System.out.println("La universidad solo puede ser publica/privada");
                         valiniv = false;
-                    }
-                }
+                    }else
+                        valiniv =true;
+                }*/
                 // final dela validacion de nivel
 
                 System.out.println("Ingrese el nombre del rector:  ");
@@ -133,14 +148,14 @@ public class Laboratorio2_Guillermo_Espinal {
 
                 //resto de validaciones
                 int costo;
-                if (nivel.equals("publica")) {
+                if (nivel_s.equals("publica")) {
                     costo = 0;
                 } else {
                     costo = 600;
                 }
 
                 // adicion de la universidad
-                Universidad uni = new Universidad(nombre, sucursal, nivel, rector, date, maestros, estudiantes, costo);
+                Universidad uni = new Universidad(nombre, sucursal, nivel_s, rector, date, maestros, estudiantes, costo);
                 unis.add(uni);
                 break;
             case 2:
@@ -308,6 +323,7 @@ public class Laboratorio2_Guillermo_Espinal {
                 
                 break;
         }
+    }
     }
 
 }
